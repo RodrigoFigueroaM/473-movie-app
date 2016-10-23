@@ -174,7 +174,7 @@ var newItem = function(object) {
         '<div class="ui card"id="' + object.movie.Title + '">' +
         '<div class="ui center aligned segment">' + object.movie.Title + '</div>' +// title
         '<div class="blurring dimmable image"> <img src=' + object.movie.Poster + '><div class="ui dimmer"><div class="content"> <div class="center">'+
-        '<div class="ui inverted button">More info</div></div></div></div>'+
+        '<div class="ui inverted massive button">More info</div></div></div></div>'+
         '</div>' +
         '<div class="extra center aligned content">' +
         '<div class="ui two attached buttons">' +
