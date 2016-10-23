@@ -46,15 +46,19 @@ body
     padding: 0%;
 }
 
+main .twelve.wide.column .movie-container .ui.grid
+{
+    align-content: center;
+    margin: auto;
 
+}
 main .twelve.wide.column .movie-container .ui.grid .five.wide.column .ui.special.cards .ui.card
 {
     font-size: var(--movie-title-size);
     border: 0px;
     border-color:  var(--secondary-color);
     background-color:var(--card-background-color) ;
-
-    margin-left: 2%;
+    margin: auto;
 }
 main .twelve.wide.column .movie-container .ui.grid .five.wide.column  .ui.special.cards .ui.card .image img
 {
