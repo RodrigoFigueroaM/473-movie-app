@@ -56,6 +56,7 @@ var displayMovies = function(movies) {
 }
 
 var generateMore = function(indexes, arrayOfItems, movies) {
+    var moreInfo='<span> more info </span>';
     var numberOfSquaresToShow = indexes[1];
     var i = indexes[0];
     var $container = $("body .ui.grid .twelve.wide.column .movie-container .ui.grid");
@@ -73,6 +74,7 @@ var generateMore = function(indexes, arrayOfItems, movies) {
         $(this).find('.ui .green').unbind('click');
         $(this).find('.ui .red').unbind('click');
 
+
         //Add click eventhandler back
         $(this).find('.image').on('click', function() {
             $('.ui.modal').each(function() {
@@ -81,6 +83,10 @@ var generateMore = function(indexes, arrayOfItems, movies) {
             appendmodal(movies[index].movie);
 
         });
+
+       $('.special.cards .image').dimmer({
+            on: 'hover'
+    });
 
         $(this).find('.ui .green').on('click', function() {
 
@@ -105,8 +111,10 @@ var sendVoteToServer = function(input, index, parentNode, node) {
             Movies[index].meta.votes = res.newVotes;
             Movies[index].meta.likes = res.newLikes;
             var progressBar = (res.newLikes / res.newVotes) * 100;
+
             //Update rating
             $(parentNode).find('.rating').text('Likes: ' + res.newLikes + ' / Total Votes: ' + res.newVotes);
+
             //Update the width of progress bar
             var $temp1 = $temp.children();
 
@@ -131,12 +139,11 @@ var newItem = function(object) {
         $progress = 0;
     else
         $progress = parseInt(likes / votes * 100);
-    $item = $('<div class="five wide column">' +
+    $item = $('<div class="five wide column">' +'<div class="ui special cards">'+
         '<div class="ui card"id="' + object.movie.Title + '">' +
-        '<div class="ui center aligned segment">' + object.movie.Title + '</div>' // title
-        +
-        '<div class="image">' +
-        '<img src=' + object.movie.Poster + ' >' +
+        '<div class="ui center aligned segment">' + object.movie.Title + '</div>' +// title
+        '<div class="blurring dimmable image"> <img src=' + object.movie.Poster + '><div class="ui dimmer"><div class="content"> <div class="center">'+
+        '<div class="ui inverted button">More info</div></div></div></div>'+
         '</div>' +
         '<div class="extra center aligned content">' +
         '<div class="ui two attached buttons">' +
@@ -149,7 +156,7 @@ var newItem = function(object) {
         'Votes' + '</div>' +
         '<div class="value" >' + votes + '</div></div>' +
         '<div class="ui tiny progress"  data-percent = ' + $progress + '>' +
-        '<div class="bar" style = "transition-duration : 300ms;  width : ' + $progress + '%">' +
+        '<div class="bar" style = " width : ' + $progress + '%">' +
         '</div>' +
         '</div>' +
         '</div></div></div>');
@@ -220,6 +227,8 @@ var modal = function($popUpElement) {
         $('.ui.modal').remove();
     })
 }
+
+
 
 
 $(document).ready(main);
