@@ -39,7 +39,23 @@ var displayMovies = function(movies) {
             start -= step;
             end -= step;
         }
-        generateMore([start, end], arrayOfItems, movies);
+        $('.movie-container')
+        .transition(
+            {
+                animation  : 'fade right',
+                duration   : '.7s',
+                onComplete : function()
+                {
+                    generateMore([start,end],arrayOfItems,movies);
+                    $('.movie-container')
+                    .transition(
+                        {
+                            animation  : 'fade left',
+                            duration   : '.7s',
+                        });
+                }
+            });
+
     });
     $("#right-bttn").on("click", function() {
         if (end > total - 1) {
@@ -49,7 +65,22 @@ var displayMovies = function(movies) {
             start += step;
             end += step;
         }
-        generateMore([start, end], arrayOfItems, movies);
+        $('.movie-container')
+        .transition(
+            {
+                animation  : 'fade left',
+                duration   : '.7s',
+                onComplete : function()
+                {
+                    generateMore([start,end],arrayOfItems,movies);
+                    $('.movie-container')
+                    .transition(
+                        {
+                            animation  : 'fade right',
+                            duration   : '.7s',
+                        });
+                }
+            });
     });
 
 
