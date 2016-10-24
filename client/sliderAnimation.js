@@ -2,7 +2,7 @@ var Movies = [];
 
 var main = function() {
     retrieveMovies();
-}
+};
 
 
 var retrieveMovies = function() {
@@ -10,7 +10,7 @@ var retrieveMovies = function() {
         Movies = result;
         displayMovies(Movies);
     });
-}
+};
 
 var displayMovies = function(movies) {
     var step = 3,
@@ -40,18 +40,15 @@ var displayMovies = function(movies) {
             end -= step;
         }
         $('.movie-container')
-        .transition(
-            {
-                animation  : 'fade right',
-                duration   : '.7s',
-                onComplete : function()
-                {
-                    generateMore([start,end],arrayOfItems,movies);
+            .transition({
+                animation: 'fade right',
+                duration: '.7s',
+                onComplete: function() {
+                    generateMore([start, end], arrayOfItems, movies);
                     $('.movie-container')
-                    .transition(
-                        {
-                            animation  : 'fade left',
-                            duration   : '.7s',
+                        .transition({
+                            animation: 'fade left',
+                            duration: '.7s',
                         });
                 }
             });
@@ -66,27 +63,24 @@ var displayMovies = function(movies) {
             end += step;
         }
         $('.movie-container')
-        .transition(
-            {
-                animation  : 'fade left',
-                duration   : '.7s',
-                onComplete : function()
-                {
-                    generateMore([start,end],arrayOfItems,movies);
+            .transition({
+                animation: 'fade left',
+                duration: '.7s',
+                onComplete: function() {
+                    generateMore([start, end], arrayOfItems, movies);
                     $('.movie-container')
-                    .transition(
-                        {
-                            animation  : 'fade right',
-                            duration   : '.7s',
+                        .transition({
+                            animation: 'fade right',
+                            duration: '.7s',
                         });
                 }
             });
     });
     /* animate on left key */
-    $('body').keypress(function(event){
+    $('body').keypress(function(event) {
 
-    	var keycode = (event.keyCode ? event.keyCode : event.which);
-    	if(keycode == '37'){
+        var keycode = (event.keyCode ? event.keyCode : event.which);
+        if (keycode == '37') {
             if (start < 1) {
                 start = total - step;
                 end = total;
@@ -96,28 +90,25 @@ var displayMovies = function(movies) {
                 end -= step;
             }
             $('.movie-container')
-            .transition(
-                {
-                    animation  : 'fade right',
-                    duration   : '.7s',
-                    onComplete : function()
-                    {
-                        generateMore([start,end],arrayOfItems,movies);
+                .transition({
+                    animation: 'fade right',
+                    duration: '.7s',
+                    onComplete: function() {
+                        generateMore([start, end], arrayOfItems, movies);
                         $('.movie-container')
-                        .transition(
-                            {
-                                animation  : 'fade left',
-                                duration   : '.7s',
+                            .transition({
+                                animation: 'fade left',
+                                duration: '.7s',
                             });
                     }
                 });
         }
     });
     /* animate on right key */
-    $('body').keypress(function(event){
+    $('body').keypress(function(event) {
 
-    	var keycode = (event.keyCode ? event.keyCode : event.which);
-    	if(keycode == '39'){
+        var keycode = (event.keyCode ? event.keyCode : event.which);
+        if (keycode == '39') {
             if (end > total - 1) {
                 start = 0;
                 end = step;
@@ -126,28 +117,25 @@ var displayMovies = function(movies) {
                 end += step;
             }
             $('.movie-container')
-            .transition(
-                {
-                    animation  : 'fade left',
-                    duration   : '.7s',
-                    onComplete : function()
-                    {
-                        generateMore([start,end],arrayOfItems,movies);
+                .transition({
+                    animation: 'fade left',
+                    duration: '.7s',
+                    onComplete: function() {
+                        generateMore([start, end], arrayOfItems, movies);
                         $('.movie-container')
-                        .transition(
-                            {
-                                animation  : 'fade right',
-                                duration   : '.7s',
+                            .transition({
+                                animation: 'fade right',
+                                duration: '.7s',
                             });
                     }
                 });
         }
     });
 
-}
+};
 
 var generateMore = function(indexes, arrayOfItems, movies) {
-    var moreInfo='<span> more info </span>';
+    var moreInfo = '<span> more info </span>';
     var numberOfSquaresToShow = indexes[1];
     var i = indexes[0];
     var $container = $("body .ui.grid .twelve.wide.column .movie-container .ui.grid");
@@ -175,9 +163,9 @@ var generateMore = function(indexes, arrayOfItems, movies) {
 
         });
 
-       $('.special.cards .image').dimmer({
+        $('.special.cards .image').dimmer({
             on: 'hover'
-    });
+        });
 
         $(this).find('.ui .green').on('click', function() {
 
@@ -191,7 +179,7 @@ var generateMore = function(indexes, arrayOfItems, movies) {
         });
     });
 
-}
+};
 
 var sendVoteToServer = function(input, index, parentNode, node) {
     $.post('/movie/title/vote', input, function(res) {
@@ -214,27 +202,27 @@ var sendVoteToServer = function(input, index, parentNode, node) {
             var $temp2 = $temp1.children();
             $temp2.text(parseInt(progressBar) + '%');
             updateVotes(Movies[index], Movies[index].meta.votes);
-            updateProgessbar(Movies[index],(Movies[index].meta.likes/Movies[index].meta.votes)*100);
+            updateProgessbar(Movies[index], (Movies[index].meta.likes / Movies[index].meta.votes) * 100);
         }
-    })
-}
+    });
+};
 
 var newItem = function(object) {
     //    $photo = Movies[i].photo;
     var item;
     var $id;
     var votes = object.meta.votes;
-    var likes= object.meta.likes;
+    var likes = object.meta.likes;
     var $progress; // = parseInt(object.meta.likes/object.meta.votes*100);
     if (likes == 0 && votes == 0)
         $progress = 0;
     else
         $progress = parseInt(likes / votes * 100);
-    $item = $('<div class="five wide column">' +'<div class="ui special cards">'+
+    $item = $('<div class="five wide column">' + '<div class="ui special cards">' +
         '<div class="ui card"id="' + object.movie.Title + '">' +
-        '<div class="ui center aligned segment">' + object.movie.Title + '</div>' +// title
-        '<div class="blurring dimmable image"> <img src=' + object.movie.Poster + '><div class="ui dimmer"><div class="content"> <div class="center">'+
-        '<div class="ui inverted massive button">More info</div></div></div></div>'+
+        '<div class="ui center aligned segment">' + object.movie.Title + '</div>' + // title
+        '<div class="blurring dimmable image"> <img src=' + object.movie.Poster + '><div class="ui dimmer"><div class="content"> <div class="center">' +
+        '<div class="ui inverted massive button">More info</div></div></div></div>' +
         '</div>' +
         '<div class="extra center aligned content">' +
         '<div class="ui two attached buttons">' +
@@ -252,9 +240,9 @@ var newItem = function(object) {
         '</div>' +
         '</div></div></div>');
     return $item;
-}
-var updateVotes = function(object, votes)
-{
+};
+
+var updateVotes = function(object, votes) {
     var $field = $("div[id='" + object.movie.Title + "'] .ui.statistic");
     var $oldVote = $("div[id='" + object.movie.Title + "'] .value");
     var $updateTotal = '<div class="value" >' + votes + '</div></div>'
@@ -263,17 +251,17 @@ var updateVotes = function(object, votes)
     $oldVote.remove();
     $($field).append($updateTotal);
 
-}
-var updateProgessbar= function (object, avg)
-{
+};
+
+var updateProgessbar = function(object, avg) {
     var $field = $("div[id='" + object.movie.Title + "'] .extra.center.aligned.content");
-    var $progressBar=$("div[id='" + object.movie.Title + "'] .ui.tiny.progress");
-    var $updatedProgressBar= '<div class="ui tiny progress"  data-percent = ' + avg + '>' +'<div class="bar" style = "transition-duration : 300ms;  width : ' + avg + '%">';
+    var $progressBar = $("div[id='" + object.movie.Title + "'] .ui.tiny.progress");
+    var $updatedProgressBar = '<div class="ui tiny progress"  data-percent = ' + avg + '>' + '<div class="bar" style = "transition-duration : 300ms;  width : ' + avg + '%">';
 
     $progressBar.remove();
     $($field).append($updatedProgressBar);
+};
 
-}
 var appendmodal = function(movie) {
     var $popUpElement = $('<div class = "ui modal"><i class="close icon" id ="modal-button"></i>' +
         '<div class="ui items">' +
@@ -307,10 +295,10 @@ var appendmodal = function(movie) {
         '</div>' +
         '</div>');
     $('head').append($popUpElement);
-    $('.ui.modal').modal('show',);
+    $('.ui.modal').modal('show');
     modal($popUpElement);
 
-}
+};
 
 var modal = function($popUpElement) {
 
@@ -318,7 +306,7 @@ var modal = function($popUpElement) {
         $('.ui.modal').modal('hide');
         $('.ui.modal').remove();
     })
-}
+};
 
 
 
