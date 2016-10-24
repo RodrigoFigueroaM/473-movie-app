@@ -82,7 +82,67 @@ var displayMovies = function(movies) {
                 }
             });
     });
+    /* animate on left key */
+    $('body').keypress(function(event){
 
+    	var keycode = (event.keyCode ? event.keyCode : event.which);
+    	if(keycode == '37'){
+            if (start < 1) {
+                start = total - step;
+                end = total;
+
+            } else {
+                start -= step;
+                end -= step;
+            }
+            $('.movie-container')
+            .transition(
+                {
+                    animation  : 'fade right',
+                    duration   : '.7s',
+                    onComplete : function()
+                    {
+                        generateMore([start,end],arrayOfItems,movies);
+                        $('.movie-container')
+                        .transition(
+                            {
+                                animation  : 'fade left',
+                                duration   : '.7s',
+                            });
+                    }
+                });
+        }
+    });
+    /* animate on right key */
+    $('body').keypress(function(event){
+
+    	var keycode = (event.keyCode ? event.keyCode : event.which);
+    	if(keycode == '39'){
+            if (end > total - 1) {
+                start = 0;
+                end = step;
+            } else {
+                start += step;
+                end += step;
+            }
+            $('.movie-container')
+            .transition(
+                {
+                    animation  : 'fade left',
+                    duration   : '.7s',
+                    onComplete : function()
+                    {
+                        generateMore([start,end],arrayOfItems,movies);
+                        $('.movie-container')
+                        .transition(
+                            {
+                                animation  : 'fade right',
+                                duration   : '.7s',
+                            });
+                    }
+                });
+        }
+    });
 
 }
 
@@ -247,8 +307,9 @@ var appendmodal = function(movie) {
         '</div>' +
         '</div>');
     $('head').append($popUpElement);
-    $('.ui.modal').modal('show');
+    $('.ui.modal').modal('show',);
     modal($popUpElement);
+
 }
 
 var modal = function($popUpElement) {
