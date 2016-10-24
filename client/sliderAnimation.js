@@ -46,16 +46,9 @@ var displayMovies = function(movies) {
                 onComplete: function() {
                     generateMore([start, end], arrayOfItems, movies);
                     $('.movie-container')
-<<<<<<< HEAD
-                    .transition(
-                        {
-                            animation  : 'fade left',
-                            duration   : '.5s',
-=======
                         .transition({
                             animation: 'fade left',
                             duration: '.7s',
->>>>>>> 0537384514528a827efa7a534a7257dcb86f19bc
                         });
                 }
             });
@@ -76,16 +69,9 @@ var displayMovies = function(movies) {
                 onComplete: function() {
                     generateMore([start, end], arrayOfItems, movies);
                     $('.movie-container')
-<<<<<<< HEAD
-                    .transition(
-                        {
-                            animation  : 'fade right',
-                            duration   : '.5s',
-=======
                         .transition({
                             animation: 'fade right',
                             duration: '.7s',
->>>>>>> 0537384514528a827efa7a534a7257dcb86f19bc
                         });
                 }
             });
@@ -110,16 +96,9 @@ var displayMovies = function(movies) {
                     onComplete: function() {
                         generateMore([start, end], arrayOfItems, movies);
                         $('.movie-container')
-<<<<<<< HEAD
-                        .transition(
-                            {
-                                animation  : 'fade left',
-                                duration   : '.5s',
-=======
                             .transition({
                                 animation: 'fade left',
                                 duration: '.7s',
->>>>>>> 0537384514528a827efa7a534a7257dcb86f19bc
                             });
                     }
                 });
@@ -144,16 +123,9 @@ var displayMovies = function(movies) {
                     onComplete: function() {
                         generateMore([start, end], arrayOfItems, movies);
                         $('.movie-container')
-<<<<<<< HEAD
-                        .transition(
-                            {
-                                animation  : 'fade right',
-                                duration   : '.5s',
-=======
                             .transition({
                                 animation: 'fade right',
                                 duration: '.7s',
->>>>>>> 0537384514528a827efa7a534a7257dcb86f19bc
                             });
                     }
                 });
@@ -335,8 +307,6 @@ var modal = function($popUpElement) {
         $('.ui.modal').remove();
     })
 };
-
-
 
 
 $(document).ready(main);
