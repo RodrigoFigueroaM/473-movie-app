@@ -45,6 +45,10 @@ body
     margin: 0%;
     padding: 0%;
 }
+main .twelve.wide.column
+{
+    height: 45em;
+}
 
 main .twelve.wide.column .movie-container .ui.center.aligned.grid
 {

@@ -51,7 +51,7 @@ var displayMovies = function(movies) {
                     .transition(
                         {
                             animation  : 'fade left',
-                            duration   : '.7s',
+                            duration   : '.5s',
                         });
                 }
             });
@@ -77,7 +77,7 @@ var displayMovies = function(movies) {
                     .transition(
                         {
                             animation  : 'fade right',
-                            duration   : '.7s',
+                            duration   : '.5s',
                         });
                 }
             });
@@ -107,7 +107,7 @@ var displayMovies = function(movies) {
                         .transition(
                             {
                                 animation  : 'fade left',
-                                duration   : '.7s',
+                                duration   : '.5s',
                             });
                     }
                 });
@@ -137,7 +137,7 @@ var displayMovies = function(movies) {
                         .transition(
                             {
                                 animation  : 'fade right',
-                                duration   : '.7s',
+                                duration   : '.5s',
                             });
                     }
                 });
@@ -307,7 +307,7 @@ var appendmodal = function(movie) {
         '</div>' +
         '</div>');
     $('head').append($popUpElement);
-    $('.ui.modal').modal('show',);
+    $('.ui.modal').modal('show');
     modal($popUpElement);
 
 }
