@@ -1,84 +1,99 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
-    <script src="sliderAnimation.js" ></script>
-    <link href="https://fonts.googleapis.com/css?family=Corben:700" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
-    <script src="semantic/dist/semantic.min.js"></script>
-    <link href="indexStyle.css" rel="stylesheet" type="text/css">
+    <head>
+        <!-- standard Jquery-->
+        <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+        <!-- sliderAnimation is the main file our app relies on -->
+        <script src="./js/sliderAnimation.js" ></script>
+        <script src="./js/initializeTiles.js" ></script>
+        <script src="./js/newMovieTile.js" ></script>
+        <script src="./js/voteHandler.js" ></script>
+        <script src="./js/modal.js" ></script>
+       
+        <!-- Google fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Corben:700" rel="stylesheet">
+        <!-- import Semantic UI-->
+        <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
+        <script src="semantic/dist/semantic.min.js"></script>
+        <!-- change Semantinc UI colors -->
+        <link href="./css/style.css" rel="stylesheet" type="text/css">
+        <title>Movie</title>
+    </head>
 
-    <!-- some hovering shit-->
 
-    <title>Movie</title>
-</head>
-<!--menu-->
-<body>
-<header>
-    <div class="ui center aligned padded grid" id="top">
-        <div class="ui inverted secondary large menu">
-            <div class="header item">
-                <a  href="index.html">
-                    HOME
-                </a>
+    <!--menu-->
+    <body>
+        <header>
+            <div class="ui center aligned padded grid" id="top-menu">
+                <div class="ui inverted secondary large menu">
+                    <div class="header item">
+                        <a  href="index.html">
+                            HOME
+                        </a>
+                    </div>
+                    <a class="item" href="projFaq.html">
+                        FAQ
+                    </a>
+                    <a class="item" href="projPriv.html">
+                        PRIVACY
+                    </a>
+                    <a class="item" href="projCon.html">
+                        CONTACT
+                    </a>
+                </div>
             </div>
-            <a class="item" href="projFaq.html">
-                FAQ
-            </a>
-            <a class="item" href="projPriv.html">
-                PRIVACY
-            </a>
-            <a class="item" href="projCon.html">
-                CONTACT
-            </a>
-        </div>
-    </div>
-</header>
-<!--body/slider-->
-<main>
-    <!--slider and buttons-->
-    <div class="ui center aligned very padded grid">
-            <h2>What should I watch next?</h2>
-    </div>
-    <div class="ui padded grid" id="main">
-        <div class="sixteen center aligned column">
-            <div class="ui padded grid">
-                <!--left button-->
-                <div class="two wide middle aligned content column">
-                    <div class="left-button">
-                        <button class="massive ui button" id="left-bttn"><</button>
+        </header>
+
+
+        <!-- body/slider-->
+        <main>
+            <!-- App title-->
+            <div class="ui center aligned very padded grid">
+                    <h2>What should I watch next?</h2>
+            </div>
+            
+            <!-- slider and buttons-->
+            <div class="ui padded grid" id="main">
+                <div class="sixteen center aligned column">
+                    <div class="ui padded grid">
+                        <!--left button-->
+                        <div class="two wide middle aligned content column">
+                            <div class="left-button">
+                                <button class="massive ui button" id="left-bttn"><</button>
+                            </div>
+                        </div>
+                        <!--movies-->
+                        <div class="twelve wide column">
+                            <div class= "movie-container">
+                                <div class="ui center aligned grid">
+                                    <!--cards generated with JS go here-->
+                                </div>
+                            </div>
+                        </div>
+                        <!--right button-->
+                        <div class="two wide middle aligned content column">
+                            <div class="right-button">
+                                <button class="massive ui button" id="right-bttn">></button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <!--slide/movies-->
-                <div class="twelve wide column">
-                    <div class= "movie-container">
-                        <div class="ui center aligned grid">
-                            <!--cards generated with JS go here-->
+            </div>
+        </main>
+
+            
+        <footer>
+            <!-- footer  menu -->
+            <div class="ui padded grid" id="bottom-menu">
+                <div class="five right aligned wide column">
+                    <div class="active item">Home</div>
+                    <div class="ui horizontal inverted link  list">
+                           <a class="item" href="projPriv.html">Privacy</a>
+                           <a class="item" href="projCon.html">Contact Us</a>
+                           <a class="item" href="projFaq.html">FAQ</a>
                     </div>
                 </div>
             </div>
-            <!--right button-->
-            <div class="two wide middle aligned content column">
-                <div class="right-button">
-                    <button class="massive ui button" id="right-bttn">></button>
-                </div>
-            </div>
-        </div>
-        </div>
-    </div>
-</main>
-<footer>
-    <div class="ui padded grid" id="bottom">
-        <div class="eleven wide column"></div>
-        <div class="five wide column">
-            <div class="active item">Home</div>
-            <div class="ui horizontal inverted link  list">
-                   <a class="item" href="projPriv.html">Privacy</a>
-                   <a class="item" href="projCon.html">Contact Us</a>
-                   <a class="item" href="projFaq.html">FAQ</a>
-            </div>
-        </div>
-    </div>
-</footer>
-</body>
+        </footer>
+    </body>
 </html>

@@ -1,3 +1,4 @@
+/*variables for color scheme */
 :root {
   --main-color: #441244;
   --secondary-color:#BCBEC0;
@@ -22,7 +23,7 @@ body
 {
     background-color:var(--secondary-color);
 }
-#bottom, #top
+#bottom-menu, #top-menu
 {
     color: var(--menu-font-color);
     background-color:var(--main-color);;
@@ -32,7 +33,6 @@ body
 {
     height: 5em;
 }
-
 
  #left-bttn,#right-bttn
 {
