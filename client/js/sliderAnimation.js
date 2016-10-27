@@ -40,7 +40,7 @@ var controlDisplay= function(indexes,arrayOfTiles,movies)
         totalNumberOfMovies = movies.length;
     
  //put all elements in array
-    generateMore(indexes, arrayOfTiles, movies);
+    slideMovies(indexes, arrayOfTiles, movies);
     $("#left-bttn").on("click", function() {
      if (begining < 1) {
             begining = totalNumberOfMovies - numberOfTiles;
@@ -53,13 +53,13 @@ var controlDisplay= function(indexes,arrayOfTiles,movies)
         $('.movie-container')
             .transition({
                 animation: 'fade left',
-                duration: '.7s',
+                duration: '.5s',
                 onComplete: function() {
-                    generateMore([begining, end], arrayOfTiles, movies);
+                    slideMovies([begining, end], arrayOfTiles, movies);
                     $('.movie-container')
                         .transition({
                             animation: 'fade right',
-                            duration: '.7s',
+                            duration: '.5s',
                         });
                 }
             });
@@ -76,13 +76,13 @@ var controlDisplay= function(indexes,arrayOfTiles,movies)
         $('.movie-container')
             .transition({
                 animation: 'fade right',
-                duration: '.7s',
+                duration: '.5s',
                 onComplete: function() {
-                    generateMore([begining, end], arrayOfTiles, movies);
+                    slideMovies([begining, end], arrayOfTiles, movies);
                     $('.movie-container')
                         .transition({
                             animation: 'fade left',
-                            duration: '.7s',
+                            duration: '.5s',
                         });
                 }
             });
@@ -106,7 +106,7 @@ var controlDisplay= function(indexes,arrayOfTiles,movies)
                     animation: 'fade right',
                     duration: '.7s',
                     onComplete: function() {
-                        generateMore([begining, end], arrayOfTiles, movies);
+                        slideMovies([begining, end], arrayOfTiles, movies);
                         $('.movie-container')
                             .transition({
                                 animation: 'fade left',
@@ -134,7 +134,7 @@ var controlDisplay= function(indexes,arrayOfTiles,movies)
                     animation: 'fade left',
                     duration: '.7s',
                     onComplete: function() {
-                        generateMore([begining, end], arrayOfTiles, movies);
+                        slideMovies([begining, end], arrayOfTiles, movies);
                         $('.movie-container')
                             .transition({
                                 animation: 'fade right',
@@ -149,7 +149,7 @@ var controlDisplay= function(indexes,arrayOfTiles,movies)
 
 
 
-var generateMore = function(indexes, arrayOfTiles, movies) {
+var slideMovies = function(indexes, arrayOfTiles, movies) {
     var numberOfSquaresToShow = indexes[1];
     var i = indexes[0];
     var $container = $("body .ui.grid .twelve.wide.column .movie-container .ui.grid");
