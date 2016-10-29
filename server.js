@@ -4,7 +4,9 @@ var express = require('express'),
     movieDB = require('./modules/movieDB'),
     app;
 
-//create our Express powered HTTP server
+/**************** ************** **************  **************
+        create  Express powered HTTP server
+************** ************** **************  ************** */
 app = express();
 
 app.use(express.static(__dirname + '/client'));
@@ -21,11 +23,14 @@ app.get('/movie', function(req, res) {
     movieDB.Movie.find({}).sort({ "meta.votes": 'descending' }).exec(function(err, movies) {
         if (err) res.send("error");
         else {
+            console.log(movies);
             res.json(movies);
         }
     })
 });
-
+/**************** ************** **************  **************
+        When vote up update data on database 
+************** ************** **************  ************** */
 app.post('/movie/title/vote', function(req, res) {
 
     var vote = req.body.vote;

@@ -1,6 +1,9 @@
+/**************** ************** **************  **************
+        Create  a movie schema
+************** ************** **************  ************** */
 var mongoose = require("mongoose");
 
-mongoose.connect('mongodb://localhost/Movie');
+mongoose.connect('mongodb://localhost/movie');
 
 // Create a movie schema
 var movieSchema = mongoose.Schema({
