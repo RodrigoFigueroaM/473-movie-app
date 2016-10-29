@@ -4,30 +4,33 @@
 <title>Privacy page</title>
 <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
 <script src="semantic/dist/semantic.min.js"></script>
-<link href="indexStyle.css" rel="stylesheet" type="text/css">
+<!-- change Semantinc UI colors -->
+<link href="./css/style.css" rel="stylesheet" type="text/css">
+
 </head>
 <!--menu-->
+<!--menu-->
 <body>
-<header>
-    <div class="ui center aligned padded grid" id="top">
-        <div class="ui inverted secondary large menu">
-            <div class="header item">
-                <a  href="index.html">
-                HOME
+    <header>
+        <div class="ui center aligned padded grid" id="top-menu">
+            <div class="ui inverted secondary large menu">
+                <div class="header item">
+                    <a  href="index.html">
+                        HOME
+                    </a>
+                </div>
+                <a class="item" href="projFaq.html">
+                    FAQ
+                </a>
+                <a class="item" href="projPriv.html">
+                    PRIVACY
+                </a>
+                <a class="item" href="projCon.html">
+                    CONTACT
                 </a>
             </div>
-            <a class="item" href="projFaq.html">
-                FAQ
-            </a>
-            <a class="item" href="projPriv.html">
-                PRIVACY
-            </a>
-            <a class="item" href="projCon.html">
-                CONTACT
-            </a>
         </div>
-    </div>
-</header>
+    </header>
 <main>
     <div class="ui text left aligned fluid container">
         <h1 class="ui header">
@@ -45,17 +48,17 @@
     </main>
 
     <footer>
-        <div class="ui padded grid" id="bottom">
-            <div class="eleven wide column"></div>
-            <div class="five wide column">
-                <div class="active item">Privacy</div>
+        <!-- footer  menu -->
+        <div class="ui padded grid" id="bottom-menu">
+            <div class="five right aligned wide column">
+                <div class="active item">Home</div>
                 <div class="ui horizontal inverted link  list">
-                       <a class="item" href="index.html">Home</a>
+                       <a class="item" href="projPriv.html">Privacy</a>
                        <a class="item" href="projCon.html">Contact Us</a>
                        <a class="item" href="projFaq.html">FAQ</a>
                 </div>
             </div>
         </div>
     </footer>
-  </body>
+</body>
 </html>
