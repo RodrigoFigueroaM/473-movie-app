@@ -1,8 +1,36 @@
-var sendVoteToServer = function(input, index, parentNode, node) {
+var updateVotes = function(object, votes)
+{
+  'use strict';
+  	//find field for each movie
+    var $field = $("div[id='" + object.movie.Title + "'] .ui.statistic");
+    var $oldVote = $("div[id='" + object.movie.Title + "'] .value");
+    var $updatetotalNumberOfMovies = '<div class="value" >' + votes + '</div></div>';
+
+    $('<div class="value" id="' + object.movie.Title + ' " >'); //+votes +'</div>') ;
+    $oldVote.remove();
+    $($field).append($updatetotalNumberOfMovies);
+
+};
+
+var updateProgessbar = function(object, avg)
+{
+  	'use strict';
+    var $field = $("div[id='" + object.movie.Title + "'] .extra.center.aligned.content");
+    var $progressBar = $("div[id='" + object.movie.Title + "'] .ui.tiny.progress");
+    var $updatedProgressBar = '<div class="ui tiny progress"  data-percent = ' + avg + '>' + '<div class="bar" style = "transition-duration : 300ms;  width : ' + avg + '%">';
+
+    $progressBar.remove();
+    $($field).append($updatedProgressBar);
+};
+
+
+var sendVoteToServer = function(input, index, parentNode, node)
+{
+  'use strict';
     $.post('/movie/title/vote', input, function(res) {
         var $temp = node.next();
 
-        if (res.result == 'success') {
+        if (res.result === 'success') {
             //update votes on the movie
             Movies[index].meta.votes = res.newVotes;
             Movies[index].meta.likes = res.newLikes;
@@ -23,26 +51,3 @@ var sendVoteToServer = function(input, index, parentNode, node) {
         }
     });
 };
-
-
-
-var updateVotes = function(object, votes) {
-    var $field = $("div[id='" + object.movie.Title + "'] .ui.statistic");
-    var $oldVote = $("div[id='" + object.movie.Title + "'] .value");
-    var $updatetotalNumberOfMovies = '<div class="value" >' + votes + '</div></div>'
-
-    $('<div class="value" id="' + object.movie.Title + ' " >'); //+votes +'</div>') ;
-    $oldVote.remove();
-    $($field).append($updatetotalNumberOfMovies);
-
-};
-
-var updateProgessbar = function(object, avg) {
-    var $field = $("div[id='" + object.movie.Title + "'] .extra.center.aligned.content");
-    var $progressBar = $("div[id='" + object.movie.Title + "'] .ui.tiny.progress");
-    var $updatedProgressBar = '<div class="ui tiny progress"  data-percent = ' + avg + '>' + '<div class="bar" style = "transition-duration : 300ms;  width : ' + avg + '%">';
-
-    $progressBar.remove();
-    $($field).append($updatedProgressBar);
-};
-

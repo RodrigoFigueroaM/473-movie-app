@@ -1,8 +1,23 @@
 /**************** ************** ************** ************** **************
+    Function to show Modal when clicked on movie image
+************** ************** ************** ************** ************** */
+var showModal = function()
+{
+	'use strict';
+    $('#modal-button').on('click', function() {
+        $('.ui.modal').modal('hide');
+        $('.ui.modal').remove();
+    });
+};
+
+
+
+/**************** ************** ************** ************** **************
     Function creates a HTML Modal to be displayed when clicked on movie poster
         takes as a parameter an object in this case a movie object
 ************** ************** ************** ************** ************** */
 var appendModal = function(movie) {
+  'use strict';
     var $popUpModal = $('<div class = "ui modal"><i class="close icon" id ="modal-button"></i>' +
         '<div class="ui items">' +
         '<div class="item">' +
@@ -37,14 +52,4 @@ var appendModal = function(movie) {
     $('head').append($popUpModal);
     $('.ui.modal').modal('show');
     showModal($popUpModal);
-};
-/**************** ************** ************** ************** **************
-    Function to show Modal when clicked on movie image
-************** ************** ************** ************** ************** */
-var showModal = function($popUpModal) {
-
-    $('#modal-button').on('click', function() {
-        $('.ui.modal').modal('hide');
-        $('.ui.modal').remove();
-    })
 };
