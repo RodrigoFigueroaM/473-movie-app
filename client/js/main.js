@@ -4,7 +4,6 @@
 /* Array to hold movie objects*/
 var Movies = [];
 
-
 /**************** ************** **************  **************
         Function to control the movies presented to the user.
         Modifies indexes to change elements presented on screen
@@ -232,7 +231,7 @@ var retrieveMovies = function()
 
 
 /**************** ************** **************  **************
-        Main fucntion
+        Main function
 ************** ************** **************  ************** */
 var main = function()
 {

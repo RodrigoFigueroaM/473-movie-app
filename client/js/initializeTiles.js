@@ -9,14 +9,14 @@ var newMovieTile = function(movie)
    // var $id;
     var votes = movie.meta.votes;
     var likes = movie.meta.likes;
-    var progress;
+    var rating;
     if (likes === 0 && votes === 0)
     {
-      progress = 0;
+      rating = 0;
     }
     else
     {
-        progress = parseInt(likes / votes * 100);
+        rating = parseInt(likes / votes * 100);
     }
     $tile = $('<div class="five wide column">' +
                   '<div class="ui special cards">' +
@@ -47,8 +47,8 @@ var newMovieTile = function(movie)
                                         votes +
                                     '</div>'+
                                 '</div>' +
-                            '<div class="ui tiny progress"  data-percent = ' + progress + '>' +
-                                '<div class="bar" style = " width : ' + progress + '%">' +
+                            '<div class="ui tiny progress"  data-percent = ' + rating + '>' +
+                                '<div class="bar" style = " width : ' + rating + '%">' +
                                 '</div>' +
                             '</div>' +
                         '</div>'+
