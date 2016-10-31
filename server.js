@@ -1,6 +1,9 @@
+/* jshint browser: true, jquery: true, camelcase: true, indent: 2, undef: true, quotmark: single, maxlen: 80, trailing: true, curly: true, eqeqeq: true, forin: true, immed: true, latedef: true, newcap: true, nonew: true, unused: true, strict: true */
+
+'use strict';
+
 var express = require('express'),
-    http = require('http'),
-    parser = require("body-parser"),
+    parser = require('body-parser'),
     movieDB = require('./modules/movieDB'),
     app;
 
@@ -20,13 +23,16 @@ app.get('/', function(req, res) {
 
 app.get('/movie', function(req, res) {
     //return all of the movies sorted by total votes
-    movieDB.Movie.find({}).sort({ "meta.votes": 'descending' }).exec(function(err, movies) {
-        if (err) res.send("error");
-        else {
+    movieDB.Movie.find({}).sort({
+        'meta.votes': 'descending'
+    }).exec(function(err, movies) {
+        if (err) {
+            res.send('error');
+        } else {
             console.log(movies);
             res.json(movies);
         }
-    })
+    });
 });
 /**************** ************** **************  **************
         When vote up update data on database 
@@ -39,26 +45,34 @@ app.post('/movie/title/vote', function(req, res) {
     movieDB.Movie.findOne({ title: name }, function(err, result) {
         if (err) {
             res.json({ 'result': 'error' });
-            console.log("Error on accessing the database");
+            console.log('Error on accessing the database');
             return;
         }
         var newVotes = result.meta.votes + 1;
         var newLikes = result.meta.likes;
-        if (vote == 'yes') {
+        if (vote === 'yes') {
             newLikes += 1;
         }
 
-        movieDB.Movie.update({ title: result.title }, { meta: { votes: newVotes, likes: newLikes } }, function(err, success) {
+        movieDB.Movie.update({ title: result.title }, {
+            meta: { votes: newVotes, likes: newLikes }
+        }, function(err, success) {
 
             if (err) {
-                console.log("Error while updating database");
+                console.log('Error while updating database');
                 res.json({ 'result': 'error' });
                 return;
             }
-            var reply = { 'result': 'success', 'newVotes': newVotes, 'newLikes': newLikes }
-            res.json(reply);
-        })
-    })
+            if (success) {
+                var reply = {
+                    'result': 'success',
+                    'newVotes': newVotes,
+                    'newLikes': newLikes
+                };
+                res.json(reply);
+            }
+        });
+    });
 
 });
 
