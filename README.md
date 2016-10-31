@@ -1,6 +1,5 @@
 # 473-movie-app
-
-### Copy the project to Node.js server
+![alt tag](./screenshots/main.png) ![alt tag](./screenshots/modal.png)
 
 ### Type in Terminal: npm install  to install all of the dependencies
 ```
